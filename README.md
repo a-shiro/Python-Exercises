@@ -1,2 +1,1 @@
-# SoftUni-Courses
-SoftUni exercises
+# Courses from the professional SoftUni carriculum
