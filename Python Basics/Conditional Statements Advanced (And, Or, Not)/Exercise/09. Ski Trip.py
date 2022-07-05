@@ -1,56 +1,50 @@
-days = int(input())
-room_type = input()
+one_person_room_price = 18
+apartment_price = 25
+presidential_apartment = 35
+
+days = int(input()) - 1
+type_of_place = input()
 review = input()
 
-room_for_one_person = 0
-apartment_price = 0
-president_apartment_price = 0
+holiday_cost = 0
 
-if room_type == "room for one files_01_Wild_Cat_Zoo":
-    room_for_one_person = 18 * (days - 1)
+if type_of_place == 'room for one person':
+    holiday_cost = days * one_person_room_price
 
-elif room_type == "apartment":
-    apartment_price = 25 * (days - 1)
+elif type_of_place == 'apartment':
+    holiday_cost = days * apartment_price
+    discount = 0
 
-    if (days - 1) < 10:
-        apartment_price = apartment_price - (apartment_price * 0.30)
-    elif 10 <= (days - 1) < 15:
-        apartment_price = apartment_price - (apartment_price * 0.35)
-    else:
-        apartment_price = apartment_price - (apartment_price * 0.50)
+    if 0 < days < 10:
+        discount = holiday_cost * .3
 
-elif room_type == "president apartment":
-    president_apartment_price = 35 * (days - 1)
+    elif 10 <= days <= 15:
+        discount = holiday_cost * .35
 
-    if (days - 1) < 10:
-        president_apartment_price = president_apartment_price - (president_apartment_price * 0.10)
-    elif 10 <= (days - 1) < 15:
-        president_apartment_price = president_apartment_price - (president_apartment_price * 0.15)
-    else:
-        president_apartment_price = president_apartment_price - (president_apartment_price * 0.20)
+    elif days > 15:
+        discount = holiday_cost * .5
 
+    holiday_cost -= discount
 
-if review == "positive":
-    if room_type == "room for one files_01_Wild_Cat_Zoo":
-        total_price = room_for_one_person + (room_for_one_person * 0.25)
-        print(f"{total_price:.2f}")
-    elif room_type == "apartment":
-        total_price = apartment_price + (apartment_price * 0.25)
-        print(f"{total_price:.2f}")
-    elif room_type == "president apartment":
-        total_price = president_apartment_price + (president_apartment_price * 0.25)
-        print(f"{total_price:.2f}")
+else:
+    holiday_cost = days * presidential_apartment
+    discount = 0
 
-elif review == "negative":
-    if room_type == "room for one files_01_Wild_Cat_Zoo":
-        total_price = room_for_one_person - (room_for_one_person * 0.10)
-        print(f"{total_price:.2f}")
-    elif room_type == "apartment":
-        total_price = apartment_price - (apartment_price * 0.10)
-        print(f"{total_price:.2f}")
-    elif room_type == "president apartment":
-        total_price = president_apartment_price - (president_apartment_price * 0.10)
-        print(f"{total_price:.2f}")
+    if 0 < days < 10:
+        discount = holiday_cost * .1
 
+    elif 10 <= days <= 15:
+        discount = holiday_cost * .15
 
+    elif days > 15:
+        discount = holiday_cost * .2
 
+    holiday_cost -= discount
+
+if review == 'positive':
+    holiday_cost += holiday_cost * .25
+
+else:
+    holiday_cost -= holiday_cost * .1
+
+print(f'{holiday_cost:.2f}')
