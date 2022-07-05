@@ -19,7 +19,6 @@ for _ in range(tournaments_count):
     else:
         points_this_season += 720
 
-
 final_points = starting_athlete_points + points_this_season
 average_points = math.floor(points_this_season / tournaments_count)
 wins_percentage = wins / tournaments_count * 100
