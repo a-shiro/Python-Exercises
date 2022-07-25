@@ -71,6 +71,18 @@ for move in player_moves:
         col += 1
 
     if row < 0 or col < 0 or row >= row_size or col >= col_size:
+        if row < 0:
+            row = 0
+
+        if col < 0:
+            col = 0
+
+        if row >= row_size:
+            row = row_size - 1
+
+        if col >= col_size:
+            col = col_size - 1
+
         escaped = True
         break
 
@@ -81,32 +93,8 @@ for matrix_row in matrix:
     print(''.join(matrix_row))
 
 if escaped:
-    if row < 0:
-        row = 0
-
-    if col < 0:
-        col = 0
-
-    if row >= row_size:
-        row = row_size - 1
-
-    if col >= col_size:
-        col = col_size - 1
-
     print(f'won: {row} {col}')
-
 else:
-    if row < 0:
-        row = 0
-
-    if col < 0:
-        col = 0
-
-    if row >= row_size:
-        row = row_size - 1
-
-    if col >= col_size:
-        col = col_size - 1
     print(f'dead: {row} {col}')
 
 # 5 6
