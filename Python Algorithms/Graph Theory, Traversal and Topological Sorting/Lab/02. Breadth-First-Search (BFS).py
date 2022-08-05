@@ -5,8 +5,8 @@ def bfs(node, graph, visited):
     if node in visited:
         return
 
-    queue = deque([node])
     visited.add(node)
+    queue = deque([node])
 
     while queue:
         current_node = queue.popleft()
@@ -29,6 +29,7 @@ graph = {
     6: [],
     23: [21],
 }
+
 
 visited = set()
 

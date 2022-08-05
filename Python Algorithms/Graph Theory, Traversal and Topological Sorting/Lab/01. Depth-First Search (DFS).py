@@ -1,41 +1,29 @@
-def dfs(node, graph, visited, component):
-    if visited[node]:
+def dfs(node, graph, visited):
+    if node in visited:
         return
 
-    visited[node] = True
+    visited.add(node)
 
     for child in graph[node]:
-        dfs(child, graph, visited, component)
+        if child not in visited:
+            dfs(child, graph, visited)
 
-    component.append(node)
+    print(node, end=' ')
 
 
-nodes = int(input())
-graph = []
+graph = {
+    1: [19, 21, 14],
+    19: [7, 12, 31, 21],
+    7: [1],
+    12: [],
+    31: [21],
+    21: [14],
+    14: [6, 23],
+    6: [],
+    23: [21],
+}
 
-for node in range(nodes):
-    line = input()
-    children = [] if line == '' else [int(x) for x in line.split()]
-    graph.append(children)
+visited = set()
 
-visited = [False] * nodes
-
-for node in range(nodes):
-    if visited[node]:
-        continue
-
-    component = []
-    dfs(node, graph, visited, component)
-
-    print(f"Connected component: {' '.join([(str(x)) for x in component])}")
-
-# 9
-# 3 6
-# 3 4 5 6
-# 8
-# 0 1 5
-# 1 6
-# 1 3
-# 0 1 4
-#
-# 2
+for node in graph:
+    dfs(node, graph, visited)
