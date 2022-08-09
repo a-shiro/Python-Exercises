@@ -24,24 +24,13 @@ def create_graph(edges):
     return result
 
 
-def read_edges(streets):
-    result = []
-
-    for _ in range(streets):
-        node_1, node_2 = input().split(' - ')
-
-        result.append((node_1, node_2))
-
-    return result
-
-
 buildings = int(input())
 streets = int(input())
 
-edges = read_edges(streets)
+edges = [(input().split(' - ')) for _ in range(streets)]
 graph = create_graph(edges)
 
-result = []
+important_streets = []
 
 for node_1, node_2 in edges:
     visited = set()
@@ -52,14 +41,14 @@ for node_1, node_2 in edges:
     dfs(node_1, graph, visited)
 
     if len(visited) != buildings:
-        result.append((node_1, node_2))
+        important_streets.append((node_1, node_2))
 
     graph[node_1].append(node_2)
     graph[node_2].append(node_1)
 
 
 print('Important streets:')
-for result_tuple in result:
+for result_tuple in important_streets:
     streets = [*result_tuple]
     streets.sort()
 
