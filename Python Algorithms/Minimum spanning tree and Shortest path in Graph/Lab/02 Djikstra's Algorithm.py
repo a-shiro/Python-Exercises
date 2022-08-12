@@ -4,11 +4,11 @@ from collections import deque
 
 def get_result_sequence(target_destination):
     result = deque()
-    element = target_destination
+    node = target_destination
 
-    while element is not None:
-        result.appendleft(element)
-        element = parent[element]
+    while node is not None:
+        result.appendleft(node)
+        node = parent[node]
 
     return result
 
@@ -48,11 +48,12 @@ parent = [None] * (max_node + 1)
 distance[start] = 0
 
 # 3. Create a priority queue and start the BFS
-priority_queue = PriorityQueue()  # In the PQ we need to explicitly tell it how to sort elements
+priority_queue = PriorityQueue()
 priority_queue.put((0, start))
 
 while not priority_queue.empty():
-    min_distance, node = priority_queue.get()  # get removes the element from the queue and returns it
+    min_distance, node = priority_queue.get()  # get removes the shortest current path(node and distance) from the queue
+    # and returns it
 
     if node == target_destination:
         break  # we have found the shortest path to the destination
