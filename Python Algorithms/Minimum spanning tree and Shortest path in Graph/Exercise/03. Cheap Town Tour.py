@@ -1,3 +1,5 @@
+# Kruskal's Algorithm
+
 def find_root(parent, node):
     while node != parent[node]:
         node = parent[node]
