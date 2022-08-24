@@ -18,3 +18,12 @@ def calc_binom(n, k, cache):
 
 
 print(calc_binom(n, k, {}))
+
+# 3
+# 2
+
+# 4
+# 0
+
+# 49
+# 10
