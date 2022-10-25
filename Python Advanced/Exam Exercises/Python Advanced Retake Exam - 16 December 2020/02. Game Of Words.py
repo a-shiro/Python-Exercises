@@ -3,7 +3,6 @@ def pos_out_of_range(next_p_row, next_p_col, size):
 
 
 def get_next_pos(p_row, p_col, command):
-
     if command == 'up':
         return p_row - 1, p_col
     elif command == 'down':
@@ -16,7 +15,6 @@ def get_next_pos(p_row, p_col, command):
 
 def start_collecting(player_position, field):
     global initial_str
-
     p_row, p_col = player_position
 
     n = int(input())
@@ -24,15 +22,12 @@ def start_collecting(player_position, field):
         command = input()
 
         next_p_row, next_p_col = get_next_pos(p_row, p_col, command)
-
         if pos_out_of_range(next_p_row, next_p_col, size):
             initial_str = initial_str[:-1]
-
         elif not field[next_p_row][next_p_col] == '-':
             initial_str += field[next_p_row][next_p_col]
             field[next_p_row][next_p_col], field[p_row][p_col] = 'P', '-'
             p_row, p_col = next_p_row, next_p_col
-
         else:
             field[next_p_row][next_p_col], field[p_row][p_col] = 'P', '-'
             p_row, p_col = next_p_row, next_p_col
@@ -59,10 +54,10 @@ def create_field(size):
 initial_str = input()
 size = int(input())
 
-field = create_field(size)
-player_position = get_starting_position(field)
-start_collecting(player_position, field)
-
+field = create_field(size)  # create field
+player_position = get_starting_position(field)  # get player position
+start_collecting(player_position, field)  # make a for loop and start accepting direction
+# if next pos is letter
+# if next pos is out of field
 print(initial_str)
 [print(''.join(row)) for row in field]
-

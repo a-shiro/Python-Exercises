@@ -82,4 +82,3 @@ else:
 print('Your path:')
 for path in player_path:
     print(path)
-
